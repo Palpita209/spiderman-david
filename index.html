@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Royal - Your Premium Gaming Experience</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c0a060;
+            --dark: #121212;
+            --light: #f8f9fa;
+            --secondary: #6c3483;
+            --accent: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid var(--primary);
+        }
+        
+        .navbar-brand {
+            color: var(--primary) !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-nav .nav-link {
+            color: var(--light) !important;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1400/600') center/cover no-repeat;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border: none;
+            padding: 10px 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #a08040;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            border: none;
+            padding: 10px 25px;
+            font-weight: bold;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5b2d6f;
+        }
+        
+        .game-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--primary);
+            transition: all 0.3s;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .game-card img {
+            transition: all 0.3s;
+        }
+        
+        .game-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .card-img-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .feature-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--primary);
+            padding: 30px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .testimonial {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--primary);
+            padding: 30px;
+            position: relative;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .promotion {
+            background: linear-gradient(to right, var(--secondary), var(--dark));
+            padding: 40px 0;
+        }
+        
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            border-top: 1px solid var(--primary);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-heading {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-link {
+            color: var(--light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--dark) !important;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+        }
+        
+        .jackpot-counter {
+            background-color: var(--dark);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 0 3px;
+        }
+        
+        /* Animation for jackpot counter */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .jackpot-wrapper {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-dice me-2"></i>CASINO ROYAL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#games">Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#promotions">Promotions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary ms-lg-3" href="#signup">SIGN UP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light ms-lg-2" href="#login">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="text-white mb-4">WELCOME TO <span class="text-primary">CASINO ROYAL</span></h1>
+                    <p class="lead text-white mb-4">Experience the thrill of premium online casino gaming. Join thousands of players and win big today!</p>
+                    
+                    <!-- Jackpot Counter -->
+                    <div class="mb-4">
+                        <h3 class="text-white">CURRENT JACKPOT</h3>
+                        <div class="jackpot-wrapper">
+                            <span class="jackpot-counter">$</span>
+                            <span class="jackpot-counter">1</span>
+                            <span class="jackpot-counter">2</span>
+                            <span class="jackpot-counter">5</span>
+                            <span class="jackpot-counter">6</span>
+                            <span class="jackpot-counter">7</span>
+                            <span class="jackpot-counter">8</span>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#signup" class="btn btn-primary btn-lg">PLAY NOW</a>
+                        <a href="#about" class="btn btn-secondary btn-lg">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="py-5" id="games">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="text-primary mb-3">POPULAR GAMES</h2>
+                    <p class="lead">Explore our collection of the most exciting casino games. From slots to poker, we have everything you need for an unforgettable gaming experience.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card card text-white">
+                        <img src="OIP.jpg" class="card-img" alt="Slots Game">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">Premium Slots</h5>
+                            <p class="card-text">Over 500 slot games with amazing graphics and huge jackpots.</p>
+                            <a href="#" class="btn btn-primary btn-sm">PLAY NOW</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card card text-white">
+                        <img src="wp6618433.jpg" class="card-img" alt="Poker Game">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">Texas Hold'em Poker</h5>
+                            <p class="card-text">Join live poker tables with players from around the world.</p>
+                            <a href="#" class="btn btn-primary btn-sm">PLAY NOW</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card card text-white">
+                        <img src="download.jpg" class="card-img" alt="Roulette Game">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">European Roulette</h5>
+                            <p class="card-text">Experience the thrill of the roulette wheel in HD quality.</p>
+                            <a href="#" class="btn btn-primary btn-sm">PLAY NOW</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card card text-white">
+                        <img src="th.jpg" class="card-img" alt="Blackjack Game">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">Blackjack</h5>
+                            <p class="card-text">Classic blackjack with multiple variants and betting options.</p>
+                            <a href="#" class="btn btn-primary btn-sm">PLAY NOW</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card card text-white">
+                        <img src="31.jpg" class="card-img" alt="Baccarat Game">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">Baccarat</h5>
+                            <p class="card-text">The elegant card game with simple rules and big wins.</p>
+                            <a href="#" class="btn btn-primary btn-sm">PLAY NOW</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card card text-white">
+                        <img src="download.jpg" class="card-img" alt="Live Dealer Game">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">Live Dealer Games</h5>
+                            <p class="card-text">Real dealers, real tables, real casino atmosphere.</p>
+                            <a href="#" class="btn btn-primary btn-sm">PLAY NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary btn-lg">VIEW ALL GAMES</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-dark" id="features">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="text-primary mb-3">WHY CHOOSE US</h2>
+                    <p class="lead">We pride ourselves on offering the best online casino experience with top-notch security, generous bonuses, and premium gaming.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="text-white">100% Secure</h4>
+                        <p>Your data and transactions are protected with industry-leading encryption technology.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h4 class="text-white">Generous Bonuses</h4>
+                        <p>Enjoy welcome bonuses, free spins, and regular promotions for extra playing time.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4 class="text-white">Mobile Friendly</h4>
+                        <p>Play your favorite games anytime, anywhere on your smartphone or tablet.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4 class="text-white">24/7 Support</h4>
+                        <p>Our friendly customer support team is available around the clock to assist you.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4 class="text-white">Fast Payments</h4>
+                        <p>Quick and easy deposits and withdrawals with multiple payment methods.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h4 class="text-white">VIP Program</h4>
+                        <p>Join our exclusive VIP club and enjoy special privileges and personalized services.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5" id="testimonials">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="text-primary mb-3">WHAT PLAYERS SAY</h2>
+                    <p class="lead">Don't just take our word for it. Here's what some of our players have to say about their experience with Casino Royal.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial">
+                        <img src="/api/placeholder/80/80" class="testimonial-img" alt="Player 1">
+                        <h5 class="text-white">Michael R.</h5>
+                        <p class="text-muted">Poker Enthusiast</p>
+                        <p>The poker rooms are fantastic! I love the variety of tables and the smooth gameplay. The bonuses are generous, and withdrawals are always prompt.</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial">
+                        <img src="/api/placeholder/80/80" class="testimonial-img" alt="Player 2">
+                        <h5 class="text-white">Sarah L.</h5>
+                        <p class="text-muted">Slots Player</p>
+                        <p>I won a huge jackpot on the Diamond Dreams slot! The customer service team was helpful throughout the withdrawal process. Definitely recommending to friends!</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial">
+                        <img src="/api/placeholder/80/80" class="testimonial-img" alt="Player 3">
+                        <h5 class="text-white">James T.</h5>
+                        <p class="text-muted">Blackjack Player</p>
+                        <p>The live dealer blackjack games are top-notch. It feels like I'm sitting at a real casino table. The dealers are professional and friendly.</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section class="promotion" id="promotions">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="text-white mb-4">GET 200% WELCOME BONUS</h2>
+                    <p class="lead text-white mb-4">Sign up today and get a 200% bonus on your first deposit up to $1000 plus 50 free spins on selected slot games!</p>
+                    <a href="#signup" class="btn btn-primary btn-lg">CLAIM NOW</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="Promotion" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5" id="about">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="text-primary mb-4">ABOUT CASINO ROYAL</h2>
+                    <p class="lead">Casino Royal is a premium online casino established in 2015, offering a wide range of casino games from leading software providers.</p>
+                    <p>Our mission is to provide the most entertaining and rewarding gaming experience in a safe and secure environment. We are licensed and regulated by the Malta Gaming Authority, ensuring fair play and responsible gaming.</p>
+                    <p>With over 1000 games, generous bonuses, and 24/7 customer support, we strive to exceed our players' expectations and deliver an unmatched online casino experience.</p>
+                    <a href="#" class="btn btn-primary mt-3">LEARN MORE</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="About Casino Royal" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">CASINO ROYAL</h5>
+                    <p>Your premier destination for online casino gaming. Experience the thrill of gambling from the comfort of your home.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">QUICK LINKS</h5>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#games" class="footer-link">Games</a>
+                    <a href="#features" class="footer-link">Features</a>
+                    <a href="#promotions" class="footer-link">Promotions</a>
+                    <a href="#about" class="footer-link">About Us</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">GAMES</h5>
+                    <a href="#" class="footer-link">Slots</a>
+                    <a href="#" class="footer-link">Poker</a>
+                    <a href="#" class="footer-link">Blackjack</a>
+                    <a href="#" class="footer-link">Roulette</a>
+                    <a href="#" class="footer-link">Live Casino</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">CONTACT US</h5>
+                    <p><i class="fas fa-envelope me-2"></i> support@casinoroyal.com</p>
+                    <p><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 123 Gaming Street, Malta</p>
+                </div>
+            </div>
+            
+            <hr class="border-primary">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2025 Casino Royal. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white me-3">Terms & Conditions</a>
+                    <a href="#" class="text-white me-3">Privacy Policy</a>
+                    <a href="#" class="text-white">Responsible Gaming</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-primary">
+                    <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control bg-dark text-white" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control bg-dark text-white" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control bg-dark text-white" id="password" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="terms" required>
+                            <label class="form-check-label" for="terms">I agree to the Terms & Conditions</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">CREATE ACCOUNT</button>
+                    </form>
+                </div>
+                <div class="modal-footer border-primary text-center d-block">
+                    <p class="mb-0">Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Log In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-primary">
+                    <h5 class="modal-title" id="loginModalLabel">Log In</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control bg-dark text-white" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control bg-dark text-white" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember">
+                            <label class="form-check-label" for="remember">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">LOG IN</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-primary">Forgot Password?</a>
+                    </div>
+                </div>
+                <div class="<div class="modal-footer border-primary text-center d-block">
+                    <p class="mb-0">Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize all tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Handle modal links differently
+                if (this.getAttribute('data-bs-toggle') === 'modal') {
+                    return;
+                }
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.classList.remove('show');
+                    }
+                }
+            });
+        });
+        
+        // Dynamic jackpot counter
+        function updateJackpot() {
+            // Get all digits
+            const digits = document.querySelectorAll('.jackpot-counter');
+            
+            // Skip the dollar sign
+            for (let i = 1; i < digits.length; i++) {
+                // Random chance to increment a digit
+                if (Math.random() < 0.3) {
+                    let currentValue = parseInt(digits[i].textContent);
+                    currentValue = (currentValue + 1) % 10;
+                    digits[i].textContent = currentValue;
+                    
+                    // Add animation class
+                    digits[i].classList.add('jackpot-highlight');
+                    setTimeout(() => {
+                        digits[i].classList.remove('jackpot-highlight');
+                    }, 500);
+                }
+            }
+        }
+        
+        // Update jackpot every 3 seconds
+        setInterval(updateJackpot, 3000);
+        
+        // Modal trigger setup for signup and login buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup for sign up modal
+            document.querySelectorAll('a[href="#signup"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
+                    signupModal.show();
+                });
+            });
+            
+            // Setup for login modal
+            document.querySelectorAll('a[href="#login"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                    loginModal.show();
+                });
+            });
+            
+            // Add sticky header effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('bg-dark');
+                    navbar.classList.remove('bg-transparent');
+                } else {
+                    navbar.classList.add('bg-transparent');
+                    navbar.classList.remove('bg-dark');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
